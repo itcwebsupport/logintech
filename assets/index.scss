@@ -1,0 +1,18 @@
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "import-icons";
+@import "layout";
+@import "homepage";
+@import "error-page";
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .page-content {
+    flex-grow: 1;
+    padding-top: calc(#{$menu-height} + 3rem);
+    padding-bottom: 3rem;
+  }
+}

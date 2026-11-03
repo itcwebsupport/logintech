@@ -1,0 +1,36 @@
+// bootstrap színek
+$primary: #1f5fa8;
+$secondary: #5f7d9c;
+$dark: #0b1f3a;
+$light: #f3f6fb;
+$info: #8fb8e8;
+$white: #fff;
+
+$body-color: #22324a;
+$body-bg: $white;
+$link-color: $primary;
+
+// bootstrap tipográfia - a font változókat a layout.tsx-ben a next/font adja
+$font-family-sans-serif: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+$headings-font-weight: 600;
+$headings-color: $dark;
+
+// bootstrap formok, komponensek
+$border-radius: .5rem;
+$border-radius-lg: .75rem;
+$input-padding-y: .8rem;
+$input-padding-x: 1rem;
+$input-border-color: #d3dceb;
+$input-focus-border-color: $primary;
+$btn-padding-y: .75rem;
+$btn-padding-x: 1.75rem;
+$btn-font-weight: 600;
+
+// saját közös változók
+$menu-height: 5rem;
+$transition-time: .3s;
+$section-padding-y: 6.5rem;
+$card-shadow: 0 18px 45px rgba($dark, .08);
+$card-shadow-hover: 0 24px 55px rgba($dark, .14);
+$dark-gradient: linear-gradient(160deg, $dark 0%, #12305a 100%);

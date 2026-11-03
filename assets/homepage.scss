@@ -1,0 +1,502 @@
+.content-section {
+  padding: $section-padding-y 0;
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .75rem;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: $primary;
+
+    &::before {
+      content: '';
+      width: 2.5rem;
+      height: 2px;
+      background: $primary;
+    }
+  }
+
+  .section-title {
+    margin-bottom: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.2;
+  }
+}
+
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  // a hero a fix, átlátszó menü alá fut be, ezért a felső padding tartalmazza a menü magasságát
+  padding: calc(#{$menu-height} + 3rem) 0 6rem;
+  background:
+    linear-gradient(110deg, rgba($dark, .94) 0%, rgba($dark, .8) 45%, rgba($primary, .45) 100%),
+    url(/pic_2.webp) center / cover no-repeat;
+  color: $white;
+
+  .hero-container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: .4rem 1rem;
+    border: 1px solid rgba($info, .5);
+    border-radius: 2rem;
+    font-size: .8rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: $info;
+    animation: hero-fade-up 1s ease both;
+  }
+
+  .hero-quote {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    border-left: 3px solid $info;
+    animation: hero-fade-up 1s ease .2s both;
+
+    p {
+      margin-bottom: 1rem;
+      font-family: $headings-font-family;
+      font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+      line-height: 1.15;
+
+      em {
+        color: $info;
+      }
+    }
+
+    cite {
+      font-size: .95rem;
+      font-style: normal;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba($white, .65);
+
+      &::before {
+        content: '— ';
+      }
+    }
+  }
+
+  .hero-title {
+    max-width: 40rem;
+    margin-bottom: 2.5rem;
+    font-family: $font-family-sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba($white, .85);
+    animation: hero-fade-up 1s ease .4s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    animation: hero-fade-up 1s ease .6s both;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    color: rgba($white, .7);
+    font-size: 1.5rem;
+    transform: translateX(-50%);
+    animation: hero-bounce 2s ease-in-out infinite;
+    transition: color $transition-time;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.about-section {
+  .about-images {
+    position: relative;
+    padding: 0 3rem 4rem 0;
+
+    .about-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius-lg;
+      object-fit: cover;
+    }
+
+    .about-image-main {
+      aspect-ratio: 4 / 3;
+      box-shadow: $card-shadow;
+    }
+
+    .about-image-secondary {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      aspect-ratio: 4 / 3;
+      border: 6px solid $white;
+      box-shadow: $card-shadow-hover;
+    }
+
+    .about-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: -1.5rem;
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.5rem;
+      border-radius: $border-radius-lg;
+      background: $dark-gradient;
+      box-shadow: $card-shadow-hover;
+      color: $white;
+
+      strong {
+        font-family: $headings-font-family;
+        font-size: 2.25rem;
+        line-height: 1;
+      }
+
+      span {
+        font-size: .8rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: $info;
+      }
+    }
+  }
+
+  .about-lead {
+    font-size: 1.15rem;
+    color: $dark;
+  }
+
+  .about-list {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 500;
+    color: $dark;
+
+    i {
+      margin-right: .5rem;
+      color: $primary;
+    }
+  }
+
+  .about-stats {
+    margin-top: 5rem;
+
+    .stat-card {
+      @extend %card-surface;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding: 2rem 1.5rem;
+      text-align: center;
+
+      strong {
+        font-family: $headings-font-family;
+        font-size: 2.5rem;
+        color: $primary;
+      }
+
+      span {
+        color: $secondary;
+      }
+    }
+  }
+
+  .services-container {
+    margin-top: $section-padding-y;
+
+    .service-card {
+      @extend %card-surface;
+      height: 100%;
+      padding: 2rem 1.75rem;
+
+      .service-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: 1.25rem;
+        border-radius: $border-radius;
+        background: rgba($primary, .1);
+        color: $primary;
+        font-size: 1.5rem;
+        transition: background-color $transition-time, color $transition-time;
+      }
+
+      h3 {
+        font-size: 1.35rem;
+      }
+
+      p {
+        margin: 0;
+        color: $secondary;
+      }
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: $card-shadow-hover;
+
+        .service-icon {
+          background: $primary;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.contact-section {
+  background: $light;
+
+  .contact-card {
+    @extend %card-surface;
+    height: 100%;
+    padding: 2.5rem;
+  }
+
+  .contact-form {
+    .form-label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: $dark;
+    }
+
+    .form-check-label {
+      font-size: .9rem;
+      color: $secondary;
+
+      a {
+        color: $primary;
+        font-weight: 600;
+      }
+    }
+
+    .contact-submit {
+      margin-top: .5rem;
+    }
+  }
+
+  .contact-map-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+
+    .contact-map {
+      flex: 1;
+      width: 100%;
+      min-height: 22rem;
+      border: 0;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin: 0;
+      padding: 1.75rem 2.5rem;
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: .85rem;
+      }
+
+      i {
+        color: $primary;
+        font-size: 1.15rem;
+      }
+
+      a {
+        color: $dark;
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+.grant-section {
+  .grant-data {
+    @extend %card-surface;
+    margin: 0;
+    padding: 1rem 2rem;
+
+    .grant-data-row {
+      padding: .9rem 0;
+      border-bottom: 1px solid rgba($primary, .1);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      dt {
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: $secondary;
+      }
+
+      dd {
+        margin: .2rem 0 0;
+        font-weight: 500;
+        color: $dark;
+      }
+    }
+  }
+
+  .grant-text {
+    p {
+      line-height: 1.75;
+    }
+
+    .grant-eu {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0 0;
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid $primary;
+      border-radius: $border-radius;
+      background: $light;
+      font-weight: 600;
+      color: $dark;
+
+      i {
+        color: $primary;
+        font-size: 1.75rem;
+      }
+    }
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-section {
+    .hero-eyebrow,
+    .hero-quote,
+    .hero-title,
+    .hero-actions,
+    .hero-scroll {
+      animation: none;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .about-section .about-images .about-badge {
+    left: 1rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .content-section {
+    padding: ($section-padding-y * .65) 0;
+  }
+
+  .about-section .services-container {
+    margin-top: $section-padding-y * .65;
+  }
+
+  .contact-section {
+    .contact-card {
+      padding: 1.5rem;
+    }
+
+    .contact-map-card .contact-info {
+      padding: 1.5rem;
+    }
+  }
+
+  .grant-section .grant-data {
+    padding: .5rem 1.25rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .hero-section .hero-quote {
+    padding-left: 1.25rem;
+  }
+
+  .about-section .about-images {
+    padding: 0 1.5rem 3rem 0;
+  }
+}
+
+.grant-banner {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 90;
+  width: 400px;
+
+  .grant-banner-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// a footer alja ne kerüljön a fixed banner alá
+.grant-banner + .main-footer .footer-container {
+  padding-bottom: calc(2rem + 104px);
+}
+
+@include media-breakpoint-down(md) {
+  .grant-banner {
+    right: 0;
+    width: 100%;
+  }
+
+  .grant-banner + .main-footer .footer-container {
+    padding-bottom: calc(2rem + 100vw * 104 / 400);
+  }
+}

@@ -1,0 +1,281 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $menu-height;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+// közös felület a kártyaszerű elemeknek
+%card-surface {
+  background: $white;
+  border: 1px solid rgba($primary, .08);
+  border-radius: $border-radius-lg;
+  box-shadow: $card-shadow;
+  transition: transform $transition-time, box-shadow $transition-time;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  letter-spacing: .03em;
+  transition: all $transition-time;
+
+  i {
+    transition: transform $transition-time;
+  }
+
+  &:hover i {
+    transform: translateX(3px);
+  }
+}
+
+.main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background-color $transition-time, box-shadow $transition-time;
+
+  .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $menu-height;
+  }
+
+  .menu-brand {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: $white;
+    text-decoration: none;
+
+    .menu-brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid rgba($white, .5);
+      border-radius: 50%;
+      font-family: $headings-font-family;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .menu-brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: $headings-font-family;
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.2;
+
+      small {
+        font-family: $font-family-sans-serif;
+        font-size: .7rem;
+        font-weight: 400;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: rgba($white, .7);
+      }
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    padding: .25rem .5rem;
+    border: none;
+    background: none;
+    color: $white;
+    font-size: 1.75rem;
+  }
+
+  .menu-list {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .menu-link {
+      position: relative;
+      padding: .5rem 0;
+      color: rgba($white, .85);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-decoration: none;
+      transition: color $transition-time;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: $info;
+        transition: width $transition-time;
+      }
+
+      &:hover {
+        color: $white;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &.is-scrolled,
+  &.is-open,
+  &.is-solid {
+    background: rgba($dark, .96);
+    box-shadow: 0 10px 30px rgba($dark, .25);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.main-footer {
+  background: $dark-gradient;
+  color: rgba($white, .7);
+
+  .footer-container {
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-brand {
+    margin-bottom: 1rem;
+    font-family: $headings-font-family;
+    font-size: 1.5rem;
+    color: $white;
+  }
+
+  .footer-text {
+    max-width: 22rem;
+    font-size: .95rem;
+  }
+
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba($white, .2);
+      border-radius: 50%;
+      color: rgba($white, .7);
+      transition: color $transition-time, background-color $transition-time, border-color $transition-time;
+
+      &:hover {
+        border-color: $primary;
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+
+  .footer-title {
+    margin-bottom: 1.25rem;
+    font-family: $font-family-sans-serif;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: $info;
+  }
+
+  .footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: .95rem;
+
+    i {
+      margin-right: .4rem;
+      color: $info;
+    }
+
+    a {
+      color: rgba($white, .7);
+      text-decoration: none;
+      transition: color $transition-time;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba($white, .1);
+    font-size: .85rem;
+    color: rgba($white, .5);
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .main-menu {
+    .menu-toggle {
+      display: block;
+    }
+
+    .menu-list {
+      position: absolute;
+      top: $menu-height;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      background: rgba($dark, .96);
+      transition: max-height $transition-time, padding $transition-time;
+
+      .menu-link {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba($white, .08);
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &.is-open .menu-list {
+      max-height: 25rem;
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .main-menu .menu-brand .menu-brand-text small {
+    display: none;
+  }
+}
